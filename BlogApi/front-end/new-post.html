@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nouvel article</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="h-screen w-screen">
+    <header class="h-[10%] bg-sky-900 flex items-center justify-center">
+      <nav class="w-full mx-[5%]">
+        <ul class="flex text-white font-bold text-xl justify-between">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="new-post.html">Nouvel article</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="mt-[5%] p-[7%] h-[80%]">
+      <h1 class="text-center text-3xl text-slate-600 font-bold">Tom's Blog</h1>
+      <form
+        id="post-form"
+        class="mt-[3%] text-slate-600 h-full"
+        action="../back-end/views/post/create.php"
+        method="post"
+      >
+        <label for="title">Titre</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          class="block w-full p-[1%] mt-[1%] border border-slate-300 rounded-md"
+        />
+        <label for="author">Auteur</label>
+        <input
+          type="text"
+          id="author"
+          name="author"
+          class="block w-full p-[1%] mt-[1%] border border-slate-300 rounded-md"
+        />
+        <label for="category_id">Catégorie</label>
+        <div>
+          <input type="radio" id="category_id" name="category_id" value="1" />
+          <label for="category_id">Sport</label>
+        </div>
+        <div>
+          <input type="radio" id="category_id" name="category_id" value="2" />
+          <label for="category_id">Loisir</label>
+        </div>
+        <label class="mt-[5%]" for="content">Contenu</label>
+        <textarea
+          id="content"
+          name="content"
+          class="block w-full p-[1%] mt-[1%] h-[40%] border border-slate-300 rounded-md"
+        ></textarea>
+        <button
+          type="submit"
+          class="mt-[5%] bg-sky-900 text-white p-[1%] rounded-md w-full items-center"
+        >
+          Publier
+        </button>
+      </form>
+    </main>
+
+    <footer class="text-center p-[7%] h-[10%]">
+      <p>&copy; 2024 Tom's Blog</p>
+    </footer>
+    <script src="create.js"></script>
+  </body>
+</html>

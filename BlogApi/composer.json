@@ -1,0 +1,7 @@
+{
+  "name": "acme/api-rest",
+  "description": "API REST para la gestión de usuarios",
+  "require": {
+    "vlucas/phpdotenv": "^5.6"
+  }
+}

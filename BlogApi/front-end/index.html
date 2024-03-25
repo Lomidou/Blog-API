@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tom's Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="h-screen w-screen">
+    <header class="h-[10%] bg-sky-900 flex items-center justify-center">
+      <nav class="w-full mx-[5%]">
+        <ul class="flex text-white font-bold text-xl justify-between">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="new-post.html">Nouvel article</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="mt-[5%] p-[7%] h-fit">
+      <h1 class="text-center text-3xl text-slate-600 font-bold">Tom's Blog</h1>
+      <div id="posts-container" class="mt-[3%] text-slate-600 h-full"></div>
+    </main>
+
+    <footer class="text-center p-[7%] h-[10%]">
+      <p>&copy; 2024 Tom's Blog</p>
+    </footer>
+    <script src="read.js"></script>
+  </body>
+</html>
