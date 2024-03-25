@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const title = document.getElementById("title").value;
     const body = document.getElementById("content").value;
     const author = document.getElementById("author").value;
+    // Correction : Utilisation de querySelector pour sélectionner le bouton radio de la catégorie
     const category_id = document.querySelector(
       'input[name="category_id"]:checked'
     ).value;

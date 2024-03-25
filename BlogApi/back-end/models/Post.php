@@ -22,32 +22,35 @@ class Post
         $this->conn = $db;
     }
 
-    //Obtenir les posts
-    public function read()
+    public function read($limit, $offset)
     {
-        //Création de la requête
+        // Création de la requête avec une clause LIMIT et OFFSET pour la pagination
         $query = 'SELECT
-            c.name as category_name,
-            p.id,
-            p.title,
-            p.body,
-            p.author,
-            p.created_at,
-            p.updated_at
-            FROM ' . $this->table . ' p
-            LEFT JOIN
-                categories c ON p.category_id = c.category_id
-            ORDER BY
-                p.created_at DESC';
+        c.name as category_name,
+        p.id,
+        p.title,
+        p.body,
+        p.author,
+        p.created_at,
+        p.updated_at
+        FROM ' . $this->table . ' p
+        LEFT JOIN categories c ON p.category_id = c.category_id
+        ORDER BY p.created_at DESC
+        LIMIT :limit OFFSET :offset';
 
-        //Préparation de la requête
-        $req = $this->conn->prepare($query);
+        // Préparation de la requête
+        $stmt = $this->conn->prepare($query);
 
-        //Exécution de la requête
-        $req->execute();
+        // Liaison des valeurs de limit et offset
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
 
-        return $req;
+        // Exécution de la requête
+        $stmt->execute();
+
+        return $stmt;
     }
+
 
     //Obtenir un seul post
     public function read_single()
@@ -186,5 +189,22 @@ class Post
             printf("Erreur: %s.\n", $req->error);
             return false;
         }
+    }
+
+    //Obtenir le nombre de posts
+
+    public function count()
+    {
+        $query = 'SELECT COUNT(*) as total_rows FROM ' . $this->table;
+
+        //Préparation de la requête
+        $req = $this->conn->prepare($query);
+
+        //Exécution de la requête
+        $req->execute();
+
+        $row = $req->fetch(PDO::FETCH_ASSOC);
+
+        return $row['total_rows'];
     }
 }
