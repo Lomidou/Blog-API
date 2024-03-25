@@ -158,8 +158,8 @@ class Post
             return true;
         } else {
             //Afficher l'erreur si la requête ne s'exécute pas
-            printf("Erreur: %s.\n", $req->error);
-            return false;
+            $errorInfo = $req->errorInfo();
+            printf("Erreur: %s.\n", $errorInfo[2]);
         };
     }
 
